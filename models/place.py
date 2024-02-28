@@ -12,17 +12,19 @@ env = getenv('HBNB_TYPE_STORAGE')
 place_amenity = Table(
     'place_amenity',
     Base.metadata,
-    Column(
+    id = Column(
         'place_id',
         String(60),
         ForeignKey('places.id'),
-        primary_key=True
+        primary_key=True,
+        autoincrement=True
     ),
-    Column(
+    id = Column(
         'amenity_id',
         String(60),
         ForeignKey('amenities.id'),
-        primary_key=True
+        primary_key=True,
+        autoincrement=True
     )
 )
 
