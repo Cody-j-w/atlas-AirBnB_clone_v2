@@ -2,8 +2,6 @@
 """ """
 from tests.test_models.test_base_model import test_basemodel
 from models.place import Place
-from models.review import Review
-from models.amenity import Amenity
 
 
 class test_Place(test_basemodel):
