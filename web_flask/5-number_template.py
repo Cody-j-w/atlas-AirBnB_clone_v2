@@ -3,6 +3,7 @@
 Module containing flask script with api route that displays 'HBNB'
 """
 from flask import Flask
+from flask import render_template
 
 app = Flask(__name__)
 
