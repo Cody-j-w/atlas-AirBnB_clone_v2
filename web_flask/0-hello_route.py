@@ -1,11 +1,10 @@
 #!/usr/bin/python3
+"""Module containing flask script with route that displays Hello HBNB!"""
 from flask import Flask
-"""
-Module containing flask script with route that displays 'Hello HBNB!'
-"""
 
 
 app = Flask(__name__)
+
 
 @app.route('/', strict_slashes=False)
 def hello_world():
