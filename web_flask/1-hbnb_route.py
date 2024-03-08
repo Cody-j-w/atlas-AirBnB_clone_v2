@@ -1,7 +1,9 @@
 #!/usr/bin/python3
 from flask import Flask
 
-
+"""
+Module containing flask script with api route that displays 'HBNB'
+"""
 app = Flask(__name__)
 
 @app.route('/hbnb')
