@@ -1,9 +1,10 @@
 #!/usr/bin/python3
 from flask import Flask
-
 """
 Module containing flask script with route that displays 'Hello HBNB!'
 """
+
+
 app = Flask(__name__)
 
 @app.route('/', strict_slashes=False)
