@@ -54,7 +54,7 @@ class Place(BaseModel, Base):
         """initializes Place"""
         super().__init__(*args, **kwargs)
 
-    if models.storage_t != 'db':
+    if models.env != 'db':
         @property
         def reviews(self):
             """getter attribute returns the list of Review instances"""
