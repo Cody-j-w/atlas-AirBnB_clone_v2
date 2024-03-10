@@ -21,3 +21,12 @@ class State(BaseModel, Base):
             )
     else:
         name = ""
+
+        @property
+        def cities(self):
+            from models import storage
+            city_list = []
+            for city in storage.all("City"):
+                if city.state_id == self.id:
+                    city_list.append(city)
+            return city_list
