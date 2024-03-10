@@ -13,7 +13,7 @@ import uuid
 
 time = "%Y-%m-%dT%H:%M:%S.%f"
 
-if models.storage_t == "db":
+if models.env == "db":
     Base = declarative_base()
 else:
     Base = object
