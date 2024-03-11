@@ -58,6 +58,8 @@ class DBStorage:
         else:
             query = self.__session.query().all()
         for record in query:
+            print("accessing records...")
+            print("current record: {0}.{1}".format(record.name, record.id))
             key = "{}.{}".format(type(record).__name__, record.id)
             value = record.to_dict()
             del value['__class__']
