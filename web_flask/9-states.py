@@ -23,6 +23,7 @@ def teardown(exception):
 @app.route("/states/<id>", strict_slashes=False)
 def states_route(id=0):
     res = 0
+    title = "HBNB"
     if id == 0:
         res = storage.all("State").values()
     else:
@@ -30,9 +31,10 @@ def states_route(id=0):
             if state.split(".")[1] == id:
                 res = storage.all("State")[state]
     if id != 0 and res == 0:
-        id = -1
+        title = "Not found"
+        id = 'Not found'
 
-    return render_template("9-states.html", res=res, id=id)
+    return render_template("9-states.html", res=res, id=id, title=title)
 
 
 if __name__ == '__main__':
