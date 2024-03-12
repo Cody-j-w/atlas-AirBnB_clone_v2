@@ -7,10 +7,10 @@ from flask import Flask
 from flask import render_template
 from flask import g
 import logging
-sys.path.append(".")
 from models import storage
 
 app = Flask(__name__)
+
 
 @app.teardown_appcontext(Exception)
 def teardown():
