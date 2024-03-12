@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<HTML lang="en">
+    <HEAD>
+        <TITLE>HBNB</TITLE>
+    </HEAD>
+    <BODY>
+        {% if id == 0 %}
+        <H1>
+            States
+        </H1>
+        <UL>
+            {% for state in res|sort(attribute='name') %}
+                <LI>{{state.id}} <B>{{state.name}}</B>
+                </LI>
+            {% endfor %}
+        </UL>
+        {% elif id == -1 %}
+            <H1>Not found!</H1>
+        {% else %}
+            <H1>State: {{res.name}}</H1>
+            <H3>Cities:</H3>
+            <UL>
+                {% for city in res.cities %}
+                <LI>{{city.id}}: <B>{{city.name}}</B></LI>
+                {% endfor %}
+            </UL>
+        {% endif %}
+    </BODY>
+</HTML>
