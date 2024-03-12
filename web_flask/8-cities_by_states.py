@@ -22,11 +22,7 @@ def teardown():
 @app.route("/cities_by_states", strict_slashes=False)
 def states_route():
     if env == 'db':
-        states = storage._DBStorage__session.query(
-            State
-        ).join(
-            State.cities
-        )
+        states = storage.all("State").values()
     else:
         pass
 

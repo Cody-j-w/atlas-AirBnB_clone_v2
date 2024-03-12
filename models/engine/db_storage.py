@@ -24,6 +24,9 @@ environment = getenv("HBNB_ENV")
 connect = '{0}://{1}:{2}@{3}:3306/{4}'.format(mydb, usr, pwd, host, db)
 db_metadata = MetaData()
 
+classes = {"Amenity": Amenity, "City": City,
+           "Place": Place, "Review": Review, "State": State, "User": User}
+
 
 class DBStorage:
     """
@@ -42,27 +45,15 @@ class DBStorage:
             Base.metadata.drop_all(self.__engine)
 
     def all(self, cls=None):
-        res = {}
-        if cls == 'Amenity':
-            query = self.__session.query(Amenity).all()
-        elif cls == 'City':
-            query = self.__session.query(City).all()
-        elif cls == 'Place':
-            query = self.__session.query(Place).all()
-        elif cls == 'Review':
-            query = self.__session.query(Review).all()
-        elif cls == 'State':
-            query = self.__session.query(State).all()
-        elif cls == 'User':
-            query = self.__session.query(User).all()
-        else:
-            query = self.__session.query().all()
-        for record in query:
-            key = "{}.{}".format(type(record).__name__, record.id)
-            value = record.to_dict()
-            del value['__class__']
-            res.update({key: value})
-        return res
+        """query on the current database session"""
+        new_dict = {}
+        for clss in classes:
+            if cls is None or cls is classes[clss] or cls is clss:
+                objs = self.__session.query(classes[clss]).all()
+                for obj in objs:
+                    key = obj.__class__.__name__ + '.' + obj.id
+                    new_dict[key] = obj
+        return (new_dict)
 
     def new(self, obj):
         self.__session.add(obj)
