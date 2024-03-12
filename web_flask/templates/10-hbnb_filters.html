@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html lang="EN">
+    <head>
+        <title>HBnB</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+        <link rel="icon" type="image/x-icon" href="../static/images/icon.png">
+        <!-- global styles -->
+        <link rel="stylesheet" type="text/css" href="../static/styles/4-common.css">
+
+        <!-- header styles -->
+        <link rel="stylesheet" type="text/css" href="../static/styles/3-header.css">
+
+        <!-- footer styles -->
+        <link rel="stylesheet" type="text/css" href="../static/styles/3-footer.css">
+
+        <!-- filter styles -->
+        <link rel="stylesheet" type="text/css" href="../static/styles/6-filters.css">
+    </head>
+    <body>
+        <header>
+            <div class="logo-container">
+                <div class="logo"></div>
+            </div>
+        </header>
+        <div class="container">
+            <section class="filter">
+                <div class="locations">
+                    <h3>States</h3>
+                    <h4>&nbsp;</h4>
+                    <ul class="popover">
+                        {% for state in states|sort(attribute='name') %}
+                        <li>
+                            <B>{{state.name}}</B>
+                            <ul>
+                                {% for city in state.cities %}
+                                <li>{{city.name}}</li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="amenities">
+                    <h3>Amenities</h3>
+                    <h4>&nbsp;</h4>
+                    <ul class="popover">
+                        {% for amenity in amenities %}
+                        <li>{{amenity.name}}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <button>Search</button>
+            </section>
+        </div>
+        <footer class="footer-abs">
+            <p>Holberton School</p>
+        </footer>
+    </body>
+</html>
